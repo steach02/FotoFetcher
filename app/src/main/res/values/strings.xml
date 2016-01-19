@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FotoFetcher</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_full_size_photo">FullSizePhotoActivity</string>
+</resources>
