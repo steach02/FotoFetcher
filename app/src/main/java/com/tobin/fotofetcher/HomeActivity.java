@@ -30,8 +30,6 @@ public class HomeActivity extends AppCompatActivity {
         final SharedPreferences.Editor editor = sharedPref.edit();
         editor.clear();
 
-
-
         setContentView(R.layout.activity_home);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
