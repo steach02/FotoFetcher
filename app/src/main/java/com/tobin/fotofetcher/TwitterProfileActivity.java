@@ -32,8 +32,8 @@ public class TwitterProfileActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         //Getting values from intent
-        String username = intent.getStringExtra(MainActivity.KEY_USERNAME);
-        String profileImageUrl = intent.getStringExtra(MainActivity.KEY_PROFILE_IMAGE_URL);
+        String username = intent.getStringExtra(Login.KEY_USERNAME);
+        String profileImageUrl = intent.getStringExtra(Login.KEY_PROFILE_IMAGE_URL);
 
         //Loading image
         imageLoader = TwitterCustomVolleyRequest.getInstance(this).getImageLoader();
