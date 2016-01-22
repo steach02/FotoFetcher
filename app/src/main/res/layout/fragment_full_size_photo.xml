@@ -6,30 +6,25 @@
     android:paddingTop="5dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:orientation="vertical"
-    tools:context=".FullSizePhotoActivity"
-    android:weightSum="1">
-
+    >
 
     <ImageView
         android:id="@+id/fullSizePhotoImageView"
-        android:layout_weight=".5"
+        android:layout_weight="200"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:src="@drawable/hankbob" />
+        android:layout_height="0dp" />
 
     <ScrollView
-        android:layout_weight=".5"
+        android:layout_weight="110"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="0dp"
         >
 
         <LinearLayout
-
             android:id="@+id/tagContainer"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

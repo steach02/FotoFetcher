@@ -1,4 +1,4 @@
-package com.tobin.fotofetcher;
+package com.tobin.fotofetcher.RecyclerViewStuff;
 
 import android.content.Context;
 import android.content.res.TypedArray;

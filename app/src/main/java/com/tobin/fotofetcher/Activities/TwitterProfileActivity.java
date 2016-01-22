@@ -1,4 +1,4 @@
-package com.tobin.fotofetcher;
+package com.tobin.fotofetcher.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.tobin.fotofetcher.Activities.Login;
+import com.tobin.fotofetcher.R;
+import com.tobin.fotofetcher.TwitterCustomVolleyRequest;
 
 public class TwitterProfileActivity extends AppCompatActivity {
 

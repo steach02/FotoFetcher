@@ -1,4 +1,4 @@
-package com.tobin.fotofetcher;
+package com.tobin.fotofetcher.RecyclerViewStuff;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.tobin.fotofetcher.R;
 
 import java.util.ArrayList;
 
@@ -17,18 +19,20 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter <MyRecyclerViewA
     public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView imageName;
         TextView tags;
+        TextView imageURL;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             imageName = (TextView) itemView.findViewById(R.id.imageNameTextView);
             tags = (TextView) itemView.findViewById(R.id.tagNameTextView);
+            imageURL = (TextView) itemView.findViewById(R.id.imageURLTextView);
             Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            myClickListener.onItemClick(getPosition(), v, imageName, tags);
+            myClickListener.onItemClick(getPosition(), v, imageName, tags, imageURL);
         }
     }
 
@@ -51,8 +55,25 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter <MyRecyclerViewA
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        holder.imageName.setText(mDataset.get(position).getImageName());
-        holder.tags.setText(mDataset.get(position).getTags());
+//        holder.imageName.setText(mDataset.get(position).getImageName());
+//        holder.tags.setText(mDataset.get(position).getTags());
+        holder.imageURL.setText(mDataset.get(position).getURL());
+        String fullTags = mDataset.get(position).getTags();
+        String fullName = mDataset.get(position).getImageName();
+
+        // abbreviates the image name
+        if (fullName.length() > 9){
+            fullName = fullName.substring(0, 9);
+            fullName += "...";
+        }
+        // abreviates the tags
+        if (fullTags.length() > 8) {
+            fullTags = fullTags.substring(0, 8);
+            fullTags += "...";
+        }
+
+        holder.imageName.setText(fullName);
+        holder.tags.setText(fullTags);
     }
 
     public void addItem(DataObject dataObj, int index) {
@@ -71,6 +92,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter <MyRecyclerViewA
     }
 
     public interface MyClickListener {
-         void onItemClick(int position, View v, TextView label, TextView tagsView);
+         void onItemClick(int position, View v, TextView label, TextView tagsView, TextView imageURL);
     }
 }

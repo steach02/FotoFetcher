@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <fragment
-        android:id="@+id/listFragment"
-        tools:layout="@layout/fragment_image_list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        class="com.tobin.fotofetcher.Fragments.ListFragment"
-        >
-    </fragment>
+    android:layout_height="match_parent"
+    tools:context=".Activities.FullSizePhotoActivity">
 
     <fragment
         android:id="@+id/fullSizePhotoFragment"
         tools:layout="@layout/fragment_full_size_photo"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="1"
         class="com.tobin.fotofetcher.Fragments.FullSizeImageFragment">
     </fragment>
 

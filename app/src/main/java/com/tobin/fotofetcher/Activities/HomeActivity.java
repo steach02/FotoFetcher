@@ -1,4 +1,4 @@
-package com.tobin.fotofetcher;
+package com.tobin.fotofetcher.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.tobin.fotofetcher.RecyclerViewStuff.DataObject;
+import com.tobin.fotofetcher.RecyclerViewStuff.DividerItemDecoration;
+import com.tobin.fotofetcher.RecyclerViewStuff.MyRecyclerViewAdapter;
+import com.tobin.fotofetcher.R;
 
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -53,25 +57,30 @@ public class HomeActivity extends AppCompatActivity {
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
             editor.putString("image name", "imageName01.jpg");
             editor.putString("tags", "tag1, tag2, tag3, tag4, tag5, tag6, tag7, tag8, tag9, tag10, tag11, tag12, tag13");
+            editor.putString("url", "https://pbs.twimg.com/profile_images/3330998786/d2f9f1edcde0f7e070f443d3fb04af6b_400x400.jpeg");
             editor.commit();
         }
 
         ((MyRecyclerViewAdapter) mAdapter).setOnItemClickListener(new
               MyRecyclerViewAdapter.MyClickListener() {
                   @Override
-                  public void onItemClick(int position, View v, TextView imageName, TextView tags) {
-//                      Log.i(LOG_TAG, " Clicked on Item " + position);
+                  public void onItemClick(int position, View v, TextView imageName, TextView tags, TextView imageURL) {
+                      Log.i(LOG_TAG, " url: " + imageURL.getText().toString());
 
-//                      editor.putString("image name", imageName.toString());
-//                      editor.putString("tags", tags.toString());
-//                      editor.commit();
+                      editor.putString("image name", imageName.getText().toString());
+                      editor.putString("tags", tags.getText().toString());
+                      editor.putString("url", imageURL.getText().toString());
+                      editor.commit();
 
-                      Log.i(LOG_TAG, imageName.getText().toString());
-                      Intent intent = new Intent(getApplicationContext(), FullSizePhotoActivity.class);
-                      intent.putExtra("image name", imageName.getText().toString());
-                      intent.putExtra("tags", tags.getText().toString());
-                      startActivity(intent);
 
+
+                      if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+//                      Log.i(LOG_TAG, imageName.getText().toString());
+                          Intent intent = new Intent(getApplicationContext(), FullSizePhotoActivity.class);
+                          intent.putExtra("image name", imageName.getText().toString());
+                          intent.putExtra("tags", tags.getText().toString());
+                          startActivity(intent);
+                      }
 
                       }
                   });
@@ -103,11 +112,18 @@ public class HomeActivity extends AppCompatActivity {
 
     private ArrayList<DataObject> getDataSet() {
         ArrayList<DataObject> imageDataList = new ArrayList<>();
-        for (int i = 0; i < 25; i++) {
-            DataObject obj = new DataObject("ImageName" + i + ".jpg",
-                    "tag1, tag2, tag3, tag4, tag5, tag6, tag7, tag8, tag9, tag10, tag11, tag12, tag13 ");
-            imageDataList.add(i, obj);
-        }
+//        for (int i = 0; i < 25; i++) {
+//            DataObject obj = new DataObject("ImageName" + i + ".jpg",
+//                    "tag1, tag2, tag3, tag4, tag5, tag6, tag7, tag8, tag9, tag10, tag11, tag12, tag13 ", "url");
+//            imageDataList.add(i, obj);
+//        }
+
+        DataObject obj0 = new DataObject("hankbob", "cantlookaway,faceonlyamothercouldlove", "https://pbs.twimg.com/profile_images/3330998786/d2f9f1edcde0f7e070f443d3fb04af6b_400x400.jpeg");
+        DataObject obj1 = new DataObject("lisaburns", "creepy,mothercantevenlovethisface", "http://40.media.tumblr.com/8f7c3c67186e4d1940987a6b84f80d1b/tumblr_nnc2bu1lRE1qgepy0o1_250.jpg");
+
+        imageDataList.add(0, obj0);
+        imageDataList.add(1, obj1);
+
         return imageDataList;
     }
 }

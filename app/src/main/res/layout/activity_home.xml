@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".Activities.HomeActivity">
 
     <fragment
         android:id="@+id/listFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        class="com.tobin.fotofetcher.ListFragment"
+        class="com.tobin.fotofetcher.Fragments.ListFragment"
         tools:layout="@layout/fragment_image_list">
 
     </fragment>
