@@ -8,6 +8,10 @@ import android.widget.TextView;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 
+/*
+    Demo from the Twitter tutorial online
+ */
+
 public class TwitterProfileActivity extends AppCompatActivity {
 
     //Image Loader object
@@ -32,8 +36,8 @@ public class TwitterProfileActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         //Getting values from intent
-        String username = intent.getStringExtra(MainActivity.KEY_USERNAME);
-        String profileImageUrl = intent.getStringExtra(MainActivity.KEY_PROFILE_IMAGE_URL);
+        String username = intent.getStringExtra(LoginActivity.KEY_USERNAME);
+        String profileImageUrl = intent.getStringExtra(LoginActivity.KEY_PROFILE_IMAGE_URL);
 
         //Loading image
         imageLoader = TwitterCustomVolleyRequest.getInstance(this).getImageLoader();

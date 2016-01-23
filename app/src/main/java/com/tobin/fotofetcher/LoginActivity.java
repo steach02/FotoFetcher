@@ -43,7 +43,7 @@ import java.io.InputStream;
 
 import io.fabric.sdk.android.Fabric;
 
-public class MainActivity extends Activity implements
+public class LoginActivity extends Activity implements
         View.OnClickListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     // Twitter login variables
@@ -65,23 +65,7 @@ public class MainActivity extends Activity implements
     private CallbackManager callbackManager;
     private AccessTokenTracker tokenTracker;
     private ProfileTracker profileTracker;
-    private FacebookCallback<LoginResult> callback = new FacebookCallback<LoginResult>() {
-        @Override
-        public void onSuccess(LoginResult loginResult) {
-            AccessToken accessToken = loginResult.getAccessToken();
-            Profile profile = Profile.getCurrentProfile();
-        }
-
-        @Override
-        public void onCancel() {
-
-        }
-
-        @Override
-        public void onError(FacebookException error) {
-
-        }
-    };
+    private FacebookCallback<LoginResult> callback;
     // End of Facebook login variables
 
     // Google Plus login variables
@@ -107,12 +91,7 @@ public class MainActivity extends Activity implements
         setContentView(R.layout.activity_main);
         loginTwitter();
         loginFacebook();
-        inititalizeGooglePlus();
-    }
-
-    public void login(View v){
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
+        initializeGooglePlus();
     }
 
     public void initializeTwitter() {
@@ -168,7 +147,8 @@ public class MainActivity extends Activity implements
                         String profileImage = user.profileImageUrl.replace("_normal", "");
 
                         //Creating an Intent
-                        Intent intent = new Intent(MainActivity.this, TwitterProfileActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+
 
                         //Adding the values to intent
                         intent.putExtra(KEY_USERNAME, username);
@@ -199,13 +179,43 @@ public class MainActivity extends Activity implements
         profileTracker.startTracking();
     }
 
+
     public void loginFacebook() {
         loginButton = (LoginButton) findViewById(R.id.login_button);
+        callback = new FacebookCallback<LoginResult>() {
+            boolean isMainLobbyStarted = false;
+            AccessToken accessToken;
+            Profile profile;
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                accessToken = loginResult.getAccessToken();
+                profile = Profile.getCurrentProfile();
+
+//                Intent homeFBIntent = new Intent(LoginActivity.this, HomeActivity.class);
+//                if(!isMainLobbyStarted) {
+//                    //homeFBIntent.putExtra(KEY_USERNAME, profile.getName());
+//                    startActivity(homeFBIntent);
+//                    isMainLobbyStarted = true;
+//                }
+
+                Log.d("Success", "success");
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        };
         loginButton.setReadPermissions("user_friends");
         loginButton.registerCallback(callbackManager, callback);
     }
 
-    public void inititalizeGooglePlus() {
+    public void initializeGooglePlus() {
         signinButton = (SignInButton) findViewById(R.id.signin);
         signinButton.setOnClickListener(this);
 

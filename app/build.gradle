@@ -41,10 +41,11 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:recyclerview-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
-    compile 'com.facebook.android:facebook-android-sdk:4.0.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.6.0'
     compile('com.twitter.sdk.android:twitter:1.12.0@aar') {
         transitive = true;
     }
     compile 'com.mcxiaoke.volley:library-aar:1.0.0'
     compile 'com.google.android.gms:play-services-plus:8.4.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

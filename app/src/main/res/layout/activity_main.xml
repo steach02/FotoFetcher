@@ -66,7 +66,7 @@
 
     <LinearLayout
         android:id="@+id/signinFrame"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:gravity="center"
@@ -81,12 +81,5 @@
             android:onClick="signIn"
             android:textSize="18sp" />
     </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:layout_centerInParent="true"
-        android:onClick="login"/>
 
 </LinearLayout>

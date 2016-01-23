@@ -14,14 +14,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "HomeActivity";
+
+    //TextView object
+    private TextView textViewUsername;
+
+    //Image Loader object
+    private ImageLoader imageLoader;
+
+    //NetworkImageView Ojbect
+    private NetworkImageView profileImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,31 +61,63 @@ public class HomeActivity extends AppCompatActivity {
 
 
         // this will be where we pull an image from the DB by default
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             editor.putString("image name", "imageName01.jpg");
             editor.putString("tags", "tag1, tag2, tag3, tag4, tag5, tag6, tag7, tag8, tag9, tag10, tag11, tag12, tag13");
             editor.commit();
         }
 
         ((MyRecyclerViewAdapter) mAdapter).setOnItemClickListener(new
-              MyRecyclerViewAdapter.MyClickListener() {
-                  @Override
-                  public void onItemClick(int position, View v, TextView imageName, TextView tags) {
+                                                                          MyRecyclerViewAdapter.MyClickListener() {
+                                                                              @Override
+                                                                              public void onItemClick(int position, View v, TextView imageName, TextView tags) {
 //                      Log.i(LOG_TAG, " Clicked on Item " + position);
 
 //                      editor.putString("image name", imageName.toString());
 //                      editor.putString("tags", tags.toString());
 //                      editor.commit();
 
-                      Log.i(LOG_TAG, imageName.getText().toString());
-                      Intent intent = new Intent(getApplicationContext(), FullSizePhotoActivity.class);
-                      intent.putExtra("image name", imageName.getText().toString());
-                      intent.putExtra("tags", tags.getText().toString());
-                      startActivity(intent);
+                                                                                  Log.i(LOG_TAG, imageName.getText().toString());
+                                                                                  Intent intent = new Intent(getApplicationContext(), FullSizePhotoActivity.class);
+                                                                                  intent.putExtra("image name", imageName.getText().toString());
+                                                                                  intent.putExtra("tags", tags.getText().toString());
+                                                                                  startActivity(intent);
 
 
-                      }
-                  });
+                                                                              }
+                                                                          });
+        retrieveTwitterLogin();
+        //retrieveFacebookLogin();
+    }
+
+    public void retrieveTwitterLogin() {
+
+        //Initializing views
+        profileImage = (NetworkImageView) findViewById(R.id.home_twitter_profile_image);
+        textViewUsername = (TextView) findViewById(R.id.home_twitter_username_text_view);
+
+        //Getting the intent
+        Intent intent = getIntent();
+
+        //Getting values from intent
+        String username = intent.getStringExtra(LoginActivity.KEY_USERNAME);
+        String profileImageUrl = intent.getStringExtra(LoginActivity.KEY_PROFILE_IMAGE_URL);
+
+        //Loading image
+        imageLoader = TwitterCustomVolleyRequest.getInstance(this).getImageLoader();
+        imageLoader.get(profileImageUrl, ImageLoader.getImageListener(profileImage, R.mipmap.ic_launcher, android.R.drawable.ic_dialog_alert));
+
+        profileImage.setImageUrl(profileImageUrl, imageLoader);
+
+        //Setting the username in textview
+        textViewUsername.setText("Welcome, " + username);
+    }
+
+    public void retrieveFacebookLogin() {
+        // FB Login
+//        Intent fbIntent = getIntent();
+//        String fbUserName = fbIntent.getStringExtra(LoginActivity.KEY_USERNAME);
+//        textViewUsername.setText("Welcome, " + fbUserName);
     }
 
     @Override
