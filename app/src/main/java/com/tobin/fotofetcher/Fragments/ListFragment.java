@@ -1,4 +1,4 @@
-package com.tobin.fotofetcher;
+package com.tobin.fotofetcher.Fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.tobin.fotofetcher.R;
 
 /**
  * Created by Tobin on 1/18/16.

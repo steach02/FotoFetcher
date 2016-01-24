@@ -1,4 +1,4 @@
-package com.tobin.fotofetcher;
+package com.tobin.fotofetcher.Fragments;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import com.tobin.fotofetcher.R;
 
 import org.w3c.dom.Text;
 
@@ -34,11 +36,16 @@ public class FullSizeImageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_full_size_photo, container, false);
         SharedPreferences sharedPref = getActivity().getSharedPreferences("imageInfo", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPref.edit();
-
+        TextView testTextView = (TextView) view.findViewById(R.id.test_text_view);
+//        testTextView.setText(this.getArguments().getString("test text"));
         String image  = sharedPref.getString("image name", "null");
         String tags= sharedPref.getString("tags", "null");
+//        editor.clear();
+//        editor.commit();
+
         Log.i(LOG_TAG, "is null");
 
         if (image == null){
@@ -46,9 +53,6 @@ public class FullSizeImageFragment extends Fragment {
         } else {
             Log.i(LOG_TAG, image);
         }
-
-        View view = inflater.inflate(R.layout.fragment_full_size_photo, container, false);
-
 
         layout = (LinearLayout) view.findViewById(R.id.tagContainer);
         displayTags(tags);
@@ -58,6 +62,9 @@ public class FullSizeImageFragment extends Fragment {
 
 
     }
+
+
+
 
     public void displayTags(String tags){
         String[] tagArray = tags.split(",");

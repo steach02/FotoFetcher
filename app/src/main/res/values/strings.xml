@@ -13,5 +13,6 @@
 
     <!-- Social Media Credentials -->
     <string name="facebook_app_id">1668975446694516</string>
+    <string name="back">Back</string>
     <!-- end of JC's code -->
 </resources>

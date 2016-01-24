@@ -1,4 +1,4 @@
-package com.tobin.fotofetcher;
+package com.tobin.fotofetcher.LoginCred;
 
 import android.app.Application;
 import android.content.pm.PackageInfo;

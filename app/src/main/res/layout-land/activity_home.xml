@@ -35,7 +35,7 @@
             tools:layout="@layout/fragment_image_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            class="com.tobin.fotofetcher.ListFragment"/>
+            class="com.tobin.fotofetcher.Fragments.ListFragment"/>
 
     </LinearLayout>
 
@@ -45,6 +45,6 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         tools:layout="@layout/fragment_full_size_photo"
-        class="com.tobin.fotofetcher.FullSizeImageFragment"/>
+        class="com.tobin.fotofetcher.Fragments.FullSizeImageFragment"/>
 
 </LinearLayout>

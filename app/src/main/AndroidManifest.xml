@@ -12,32 +12,32 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d248e4917cd04390813baa9207a97702c63da802" />
-
-        <meta-data android:name="com.google.android.gms.version"
+        <meta-data
+            android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Activities.HomeActivity" />
 
-        <activity android:name=".HomeActivity" >
-
+        <activity android:name=".Activities.HomeActivity" >
         </activity>
-
         <activity
-            android:name=".FullSizePhotoActivity"
+            android:name=".Activities.FullSizePhotoActivity"
             android:label="@string/title_activity_full_size_photo"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait">
         </activity>
-
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".Activities.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER"/>
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -45,8 +45,9 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".TwitterProfileActivity" >
+        <activity android:name=".Activities.TwitterProfileActivity" >
+        </activity>
+        <activity android:name=".Activities.UploadActivity" >
         </activity>
     </application>
-
 </manifest>

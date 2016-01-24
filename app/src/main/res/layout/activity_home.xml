@@ -24,7 +24,7 @@
         android:layout_below="@+id/home_twitter_username_text_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        class="com.tobin.fotofetcher.ListFragment"
+        class="com.tobin.fotofetcher.Fragments.ListFragment"
         tools:layout="@layout/fragment_image_list">
     </fragment>
 

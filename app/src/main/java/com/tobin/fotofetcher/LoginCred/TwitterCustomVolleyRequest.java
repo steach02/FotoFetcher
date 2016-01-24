@@ -1,4 +1,4 @@
-package com.tobin.fotofetcher;
+package com.tobin.fotofetcher.LoginCred;
 
 import android.content.Context;
 import android.graphics.Bitmap;
