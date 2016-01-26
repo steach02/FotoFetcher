@@ -152,7 +152,7 @@ public class HomeActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.plusButton) {
-            Intent uploadIntent = new Intent(getApplicationContext(), UploadActivity.class);
+            Intent uploadIntent = new Intent(getApplicationContext(), CameraActivity.class);
             startActivity(uploadIntent);
         }
         return super.onOptionsItemSelected(item);
