@@ -164,10 +164,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private ArrayList<DataObject> getDataSet() {
-
-
-
-
+        
         ArrayList<DataObject> imageDataList = new ArrayList<>();
 //        for (int i = 0; i < 25; i++) {
 //            DataObject obj = new DataObject("ImageName" + i + ".jpg",
