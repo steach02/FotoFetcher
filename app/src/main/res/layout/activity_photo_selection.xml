@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:onClick="goToTheCamera"
         android:layout_below="@+id/TextView3"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentLeft="true" />
 
     <Button
         android:id="@+id/GotoGallery"
@@ -28,7 +28,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/GotoCamera"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:onClick="goToTheGallery"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Upload"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@color/black"
+        android:onClick="uploadPhoto"/>
 
 </RelativeLayout>

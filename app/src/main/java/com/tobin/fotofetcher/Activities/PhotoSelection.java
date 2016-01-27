@@ -29,4 +29,9 @@ public class PhotoSelection extends AppCompatActivity {
         Intent galleryIntent = new Intent(getApplicationContext(), GalleryActivity.class);
         startActivity(galleryIntent);
     }
+
+    public void uploadPhoto(View view) {
+//        Intent galleryIntent = new Intent(getApplicationContext(), HomeActivity.class);
+//        startActivity(galleryIntent);
+    }
 }

@@ -1,5 +1,6 @@
 package com.tobin.fotofetcher.Activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
@@ -32,11 +33,13 @@ public class CameraActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
+        super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == CAM_REQUEST){
-            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            imgTakenPhoto.setImageBitmap(thumbnail);
+        if(requestCode == CAM_REQUEST) {
+            if(resultCode == RESULT_OK) {
+                Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+                imgTakenPhoto.setImageBitmap(thumbnail);
+            }
         }
     }
 
