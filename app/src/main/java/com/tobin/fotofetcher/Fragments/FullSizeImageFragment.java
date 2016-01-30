@@ -1,6 +1,6 @@
 package com.tobin.fotofetcher.Fragments;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,60 +10,84 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.tobin.fotofetcher.R;
 
-import org.w3c.dom.Text;
 
 /**
  * Created by Tobin on 1/18/16.
  */
 public class FullSizeImageFragment extends Fragment {
 
-    LinearLayout layout;
+    LinearLayout tagLayout;
+
+    // variables for saved instance state
+//    String savedPosition;
+//    String savedName;
+//    String savedURL;
+//    String savedTags;
 
 
     private static String LOG_TAG = "FullSizeImageFragment";
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_full_size_photo, container, false);
-        SharedPreferences sharedPref = getActivity().getSharedPreferences("imageInfo", Context.MODE_PRIVATE);
-        final SharedPreferences.Editor editor = sharedPref.edit();
-        TextView testTextView = (TextView) view.findViewById(R.id.test_text_view);
-//        testTextView.setText(this.getArguments().getString("test text"));
-        String image  = sharedPref.getString("image name", "null");
-        String tags= sharedPref.getString("tags", "null");
-//        editor.clear();
-//        editor.commit();
-
-        Log.i(LOG_TAG, "is null");
-
-        if (image == null){
-            Log.i(LOG_TAG, "is null");
-        } else {
-            Log.i(LOG_TAG, image);
-        }
-
-        layout = (LinearLayout) view.findViewById(R.id.tagContainer);
-        displayTags(tags);
 
 
+//        displayTags(tags);
         return view;
+    }
 
+//    @Override
+//    public void onSaveInstanceState(Bundle savedInstanceState) {
+//        // Save the user's current game state
+//        savedInstanceState.putString("NAME", savedName);
+//        savedInstanceState.putString("TAGS", savedTags);
+//        savedInstanceState.putString("URL", savedURL);
+//
+//        // Always call the superclass so it can save the view hierarchy state
+//        super.onSaveInstanceState(savedInstanceState);
+//    }
+
+    public void setImageAttributes(String name, String tags, String url){
+//        savedPosition = position;
+//        savedName = name;
+//        savedTags = tags;
+//        savedURL = url;
+
+        setName(name);
+        setTags(tags);
+        setURL(url);
+    }
+
+    public void setName(String name){
+        TextView nameTextView = (TextView) getActivity().findViewById(R.id.image_name);
+        nameTextView.setText(name);
+    }
+
+    public void setTags(String tags){
+        tagLayout = (LinearLayout) getActivity().findViewById(R.id.tagContainer);
+        TextView tagsTextView = new TextView(getActivity());
+        tagsTextView.setText(tags);
+        tagsTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        tagLayout.addView(tagsTextView);
 
     }
 
-
+    public void setURL(String url){
+        ImageView imageView = (ImageView) getActivity().findViewById(R.id.fullSizePhotoImageView);
+        Picasso.with(getActivity()).load(url).into(imageView);
+    }
 
 
     public void displayTags(String tags){
@@ -78,7 +102,7 @@ public class FullSizeImageFragment extends Fragment {
             for (int k = 1; k < 4; k++) {
                 btn = new Button(getActivity());
                 TableRow.LayoutParams tr = new TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT);
-                layout.setWeightSum(12.0f);
+                tagLayout.setWeightSum(12.0f);
 //                tr.weight = 0;
                 btn.setLayoutParams(tr);
                 btn.setHeight(150);
@@ -88,7 +112,7 @@ public class FullSizeImageFragment extends Fragment {
                 counter++;
                 row.addView(btn);
             }
-            layout.addView(row);
+            tagLayout.addView(row);
         }
 
     }

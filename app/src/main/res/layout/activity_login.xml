@@ -17,13 +17,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:textAppearance="?android:textAppearanceSmall"-->
-        <!--android:textColor="@color/black"-->
-        <!--android:text="Login"-->
-        <!--android:onClick="login"/>-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@color/black"
+        android:text="Login"
+        android:onClick="login"/>
 
     <!--<com.facebook.login.widget.LoginButton-->
         <!--android:id="@+id/login_button"-->

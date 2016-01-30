@@ -19,18 +19,20 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter <MyRecyclerViewA
     public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView imageName;
         TextView tags;
+        TextView url;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             imageName = (TextView) itemView.findViewById(R.id.imageNameTextView);
             tags = (TextView) itemView.findViewById(R.id.tagNameTextView);
+            url = (TextView) itemView.findViewById(R.id.url_text_view);
             Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            myClickListener.onItemClick(getPosition(), v, imageName, tags);
+            myClickListener.onItemClick(getPosition(), v, imageName, tags, url);
         }
     }
 
@@ -55,6 +57,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter <MyRecyclerViewA
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         holder.imageName.setText(mDataset.get(position).getImageName());
         holder.tags.setText(mDataset.get(position).getTags());
+        holder.url.setText(mDataset.get(position).getUrl());
     }
 
     public void addItem(DataObject dataObj, int index) {
@@ -73,6 +76,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter <MyRecyclerViewA
     }
 
     public interface MyClickListener {
-         void onItemClick(int position, View v, TextView label, TextView tagsView);
+         void onItemClick(int position, View v, TextView label, TextView tagsView, TextView url);
     }
 }

@@ -74,10 +74,10 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initializeTwitter();
+//        initializeTwitter();
 //        initializeFacebook();
         setContentView(R.layout.activity_login);
-        loginTwitter();
+//        loginTwitter();
 //        loginFacebook();
 //        initializeGooglePlus();
     }

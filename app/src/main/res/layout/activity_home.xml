@@ -19,13 +19,36 @@
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:textColor="@color/black"/>
 
-    <fragment
-        android:id="@+id/listFragment"
-        android:layout_below="@+id/home_twitter_username_text_view"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        class="com.tobin.fotofetcher.Fragments.ListFragment"
-        tools:layout="@layout/fragment_image_list">
-    </fragment>
+    <LinearLayout
+        android:id="@+id/list_fragment_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/photo_fragment_container"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <!--<FrameLayout-->
+        <!--android:id="@+id/full_fragment"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+    <!--</FrameLayout>-->
+
+    <!--<fragment-->
+        <!--android:id="@+id/listFragment"-->
+        <!--android:layout_below="@+id/home_twitter_username_text_view"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--class="com.tobin.fotofetcher.Fragments.ListViewFragment"-->
+        <!--tools:layout="@layout/fragment_image_list">-->
+    <!--</fragment>-->
 
 </RelativeLayout>
