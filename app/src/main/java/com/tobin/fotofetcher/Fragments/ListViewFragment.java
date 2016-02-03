@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +18,7 @@ import com.tobin.fotofetcher.RecyclerViewStuff.MyRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
-/**
- * Created by Tobin on 1/18/16.
- */
 public class ListViewFragment extends Fragment {
-
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-
-    private static String LOG_TAG = "ListFragment";
 
     private onItemClickedListener listener;
 
@@ -42,11 +32,11 @@ public class ListViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_image_list, container, false);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
+        RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(getActivity());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MyRecyclerViewAdapter(getDataSet());
+        RecyclerView.Adapter mAdapter = new MyRecyclerViewAdapter(getDataSet());
         mRecyclerView.setAdapter(mAdapter);
         RecyclerView.ItemDecoration itemDecoration =
                 new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL);
@@ -56,7 +46,6 @@ public class ListViewFragment extends Fragment {
               MyRecyclerViewAdapter.MyClickListener() {
                   @Override
                   public void onItemClick(int position, View v, TextView imageName, TextView tags, TextView url) {
-//                      Log.i(LOG_TAG, " Clicked on Item " + position);
                       listener.onItemClicked("" + position, imageName.getText().toString(), tags.getText().toString(), url.getText().toString());
                   }
               });
@@ -78,11 +67,6 @@ public class ListViewFragment extends Fragment {
 
     private ArrayList<DataObject> getDataSet() {
         ArrayList<DataObject> imageDataList = new ArrayList<>();
-//        for (int i = 0; i < 25; i++) {
-//            DataObject obj = new DataObject("ImageName" + i + ".jpg",
-//                    "tag1, tag2, tag3, tag4, tag5, tag6, tag7, tag8, tag9, tag10, tag11, tag12, tag13");
-//            imageDataList.add(i, obj);
-//        }
         DataObject obj1 = new DataObject(
                 "name1",
                 "1tag1, 1tag2, 1tag3, 1tag4, 1tag5, 1tag6, 1tag7, 1tag8, 1tag9, 1tag10, 1tag11, 1tag12, 1tag13",
@@ -103,11 +87,31 @@ public class ListViewFragment extends Fragment {
                 "name5",
                 "5tag1, 5tag2, 5tag3, 5tag4, 5tag5, 5tag6, 5tag7, 5tag8, 5tag9, 5tag10, 5tag11, 5tag12, 5tag13",
                 "http://media.creativebloq.futurecdn.net/sites/creativebloq.com/files/images/2015/07/bart10.jpg");
+        DataObject obj6 = new DataObject("Hyperion",
+                "hype1, hype2, hype3",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Hyperion_false_color.jpg/777px-Hyperion_false_color.jpg");
+        DataObject obj7 = new DataObject("Enceladys",
+                "en1, en2, en3",
+                "http://ichef-1.bbci.co.uk/news/660/cpsprodpb/CE15/production/_85575725_enc.jpg");
+        DataObject obj8 = new DataObject("Mimas",
+                "mimas1, mimas2 mimas3",
+                "http://vignette4.wikia.nocookie.net/terraforming/images/3/3e/Mimas.jpg/revision/latest?cb=20120515031016");
+        DataObject obj9 = new DataObject("Hexagonal Storm",
+                "hex1, hex2, hex3",
+                "http://i.dailymail.co.uk/i/pix/2014/04/08/article-0-1CF20C2800000578-359_634x629.jpg");
+        DataObject obj10 = new DataObject("Saturn",
+                "saturn1, saturn2, saturn3",
+                "http://www.unmuseum.org/7wonders/saturn_planet.jpg");
         imageDataList.add(0, obj1);
         imageDataList.add(1, obj2);
         imageDataList.add(2, obj3);
         imageDataList.add(3, obj4);
         imageDataList.add(4, obj5);
+        imageDataList.add(5, obj6);
+        imageDataList.add(6, obj7);
+        imageDataList.add(7, obj8);
+        imageDataList.add(8, obj9);
+        imageDataList.add(9, obj10);
         return imageDataList;
     }
 }

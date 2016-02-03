@@ -12,7 +12,6 @@ import com.tobin.fotofetcher.R;
 import java.util.ArrayList;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter <MyRecyclerViewAdapter.DataObjectHolder> {
-    private static String LOG_TAG = "MyRecyclerViewAdapter";
     private ArrayList<DataObject> mDataset;
     private static MyClickListener myClickListener;
 
@@ -26,7 +25,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter <MyRecyclerViewA
             imageName = (TextView) itemView.findViewById(R.id.imageNameTextView);
             tags = (TextView) itemView.findViewById(R.id.tagNameTextView);
             url = (TextView) itemView.findViewById(R.id.url_text_view);
-            Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
         }
 
@@ -49,8 +47,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter <MyRecyclerViewA
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
 
-        DataObjectHolder dataObjectHolder = new DataObjectHolder(view);
-        return dataObjectHolder;
+        return new DataObjectHolder(view);
     }
 
     @Override

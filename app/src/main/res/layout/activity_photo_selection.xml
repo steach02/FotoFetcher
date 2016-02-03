@@ -13,6 +13,23 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Home!" />
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/photo_select_twitter_profile_image"
+        android:layout_below="@+id/TextView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/photo_select_twitter_username_text_view"
+        android:layout_toRightOf="@+id/photo_select_twitter_profile_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:textColor="@color/black"
+        android:visibility="gone"/>
+
     <Button
         android:id="@+id/GotoCamera"
         android:text="Go To Camera"
@@ -32,12 +49,12 @@
         android:onClick="goToTheGallery"/>
 
     <Button
+        android:id="@+id/upload_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="Upload"
         android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="@color/black"
-        android:onClick="uploadPhoto"/>
+        android:textColor="@color/black"/>
 
 </RelativeLayout>
